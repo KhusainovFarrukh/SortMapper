@@ -1,0 +1,12 @@
+.idea/
+
+!.idea/inspectionProfiles
+!.idea/codeStyles
+!.idea/misc.xml
+
+*.iml
+
+.gradle/
+build/
+
+.DS_Store
