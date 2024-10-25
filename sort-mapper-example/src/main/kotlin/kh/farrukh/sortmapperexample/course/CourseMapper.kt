@@ -4,28 +4,46 @@ import kh.farrukh.sortmapperexample.course.model.CourseCreateRequestDTO
 import kh.farrukh.sortmapperexample.course.model.CourseDetailsResponseDTO
 import kh.farrukh.sortmapperexample.course.model.CourseResponseDTO
 import kh.farrukh.sortmapperexample.course.model.CourseUpdateRequestDTO
-import kh.farrukh.sortmapperexample.teacher.TeacherMapper
-import org.mapstruct.Mapper
-import org.mapstruct.Mapping
-import org.mapstruct.MappingConstants.ComponentModel
-import org.mapstruct.MappingTarget
+import kh.farrukh.sortmapperexample.teacher.TeacherEntity
+import kh.farrukh.sortmapperexample.teacher.toResponseDTO
 
-@Mapper(
-    componentModel = ComponentModel.SPRING,
-    uses = [TeacherMapper::class]
+fun CourseCreateRequestDTO.toEntity(teacher: TeacherEntity) = CourseEntity(
+    title = title,
+    description = description,
+    slogan = slogan,
+    teacher = teacher,
+    durationMonth = durationMonth,
+    price = price
 )
-interface CourseMapper {
 
-    @Mapping(target = "teacherId", source = "teacher.id")
-    @Mapping(target = "teacherFirstName", source = "teacher.firstName")
-    @Mapping(target = "teacherLastName", source = "teacher.lastName")
-    fun toResponseDTO(entity: CourseEntity): CourseResponseDTO
+fun CourseEntity.toResponseDTO() = CourseResponseDTO(
+    id = id!!,
+    title = title,
+    description = description,
+    slogan = slogan,
+    teacherId = teacher.id!!,
+    teacherFirstName = teacher.firstName,
+    teacherLastName = teacher.lastName,
+    durationMonth = durationMonth,
+    price = price
+)
 
-    @Mapping(target = "teacherId", source = "teacher.id")
-    fun toDetailResponseDTO(entity: CourseEntity): CourseDetailsResponseDTO
+fun CourseEntity.toDetailsResponseDTO() = CourseDetailsResponseDTO(
+    id = id!!,
+    title = title,
+    description = description,
+    slogan = slogan,
+    teacherId = teacher.id!!,
+    teacher = teacher.toResponseDTO(),
+    durationMonth = durationMonth,
+    price = price
+)
 
-    fun toEntity(requestDTO: CourseCreateRequestDTO): CourseEntity
-
-    fun update(@MappingTarget entity: CourseEntity, requestDTO: CourseUpdateRequestDTO)
-
+fun CourseEntity.update(requestDTO: CourseUpdateRequestDTO, teacher: TeacherEntity) {
+    title = requestDTO.title
+    description = requestDTO.description
+    slogan = requestDTO.slogan
+    durationMonth = requestDTO.durationMonth
+    price = requestDTO.price
+    this.teacher = teacher
 }

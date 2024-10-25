@@ -14,31 +14,29 @@ import java.time.LocalDateTime
 @Service
 class CourseServiceImpl(
     private val courseRepo: CourseRepo,
-    private val courseMapper: CourseMapper,
     private val teacherService: TeacherService
 ) : CourseService {
 
     override fun getCourseById(id: Long): CourseDetailsResponseDTO {
-        return findCourse(id)
-            .let(courseMapper::toDetailResponseDTO)
+        return findCourse(id).toDetailsResponseDTO()
     }
 
     override fun getCourses(pageable: Pageable): Page<CourseResponseDTO> {
         return courseRepo
             .findAllByDeletedAtIsNull(pageable)
-            .map(courseMapper::toResponseDTO)
+            .map(CourseEntity::toResponseDTO)
     }
 
     override fun createCourse(requestDTO: CourseCreateRequestDTO) {
-        val course = courseMapper.toEntity(requestDTO)
-        course.teacher = teacherService.findTeacher(requestDTO.teacherId)
+        val teacher = teacherService.findTeacher(requestDTO.teacherId)
+        val course = requestDTO.toEntity(teacher)
         courseRepo.save(course)
     }
 
     override fun updateCourse(id: Long, requestDTO: CourseUpdateRequestDTO) {
         val course = findCourse(id)
-        courseMapper.update(course, requestDTO)
-        course.teacher = teacherService.findTeacher(requestDTO.teacherId)
+        val teacher = teacherService.findTeacher(requestDTO.teacherId)
+        course.update(requestDTO, teacher)
         courseRepo.save(course)
     }
 

@@ -12,29 +12,27 @@ import java.time.LocalDateTime
 
 @Service
 class TeacherServiceImpl(
-    private val teacherRepo: TeacherRepo,
-    private val teacherMapper: TeacherMapper
+    private val teacherRepo: TeacherRepo
 ) : TeacherService {
 
     override fun createTeacher(requestDTO: TeacherCreateRequestDTO) {
-        val teacherEntity = teacherMapper.toEntity(requestDTO)
+        val teacherEntity = requestDTO.toEntity()
         teacherRepo.save(teacherEntity)
     }
 
     override fun getTeacherById(id: Long): TeacherDetailsResponseDTO {
-        return findTeacher(id)
-            .let(teacherMapper::toDetailsResponseDTO)
+        return findTeacher(id).toDetailsResponseDTO()
     }
 
     override fun getTeachers(pageable: Pageable): Page<TeacherResponseDTO> {
         return teacherRepo
             .findAllByDeletedAtIsNull(pageable)
-            .map(teacherMapper::toResponseDTO)
+            .map(TeacherEntity::toResponseDTO)
     }
 
     override fun updateTeacher(id: Long, requestDTO: TeacherUpdateRequestDTO) {
         val teacherEntity = findTeacher(id)
-        teacherMapper.update(teacherEntity, requestDTO)
+        teacherEntity.update(requestDTO)
         teacherRepo.save(teacherEntity)
     }
 

@@ -4,19 +4,33 @@ import kh.farrukh.sortmapperexample.teacher.model.TeacherCreateRequestDTO
 import kh.farrukh.sortmapperexample.teacher.model.TeacherDetailsResponseDTO
 import kh.farrukh.sortmapperexample.teacher.model.TeacherResponseDTO
 import kh.farrukh.sortmapperexample.teacher.model.TeacherUpdateRequestDTO
-import org.mapstruct.Mapper
-import org.mapstruct.MappingConstants
-import org.mapstruct.MappingTarget
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-interface TeacherMapper {
+fun TeacherEntity.toResponseDTO() = TeacherResponseDTO(
+    id = id!!,
+    firstName = firstName,
+    lastName = lastName,
+    middleName = middleName,
+    age = age
+)
 
-    fun toResponseDTO(teacher: TeacherEntity): TeacherResponseDTO
+fun TeacherCreateRequestDTO.toEntity() = TeacherEntity(
+    firstName = firstName,
+    lastName = lastName,
+    middleName = middleName,
+    age = age
+)
 
-    fun toEntity(requestDTO: TeacherCreateRequestDTO): TeacherEntity
+fun TeacherEntity.toDetailsResponseDTO() = TeacherDetailsResponseDTO(
+    id = id!!,
+    firstName = firstName,
+    lastName = lastName,
+    middleName = middleName,
+    age = age
+)
 
-    fun toDetailsResponseDTO(teacher: TeacherEntity): TeacherDetailsResponseDTO
-
-    fun update(@MappingTarget entity: TeacherEntity, requestDTO: TeacherUpdateRequestDTO)
-
+fun TeacherEntity.update(requestDTO: TeacherUpdateRequestDTO) {
+    firstName = requestDTO.firstName
+    lastName = requestDTO.lastName
+    middleName = requestDTO.middleName
+    age = requestDTO.age
 }
