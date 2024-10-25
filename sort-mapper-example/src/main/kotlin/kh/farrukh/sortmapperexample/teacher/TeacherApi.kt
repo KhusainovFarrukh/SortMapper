@@ -22,7 +22,7 @@ interface TeacherApi {
 
     @Operation(summary = "Create a new teacher")
     @PostMapping
-    fun createTeacher(@Valid @RequestBody requestDTO: TeacherCreateRequestDTO): ResponseEntity<Void>
+    fun createTeacher(@Valid @RequestBody requestDTO: TeacherCreateRequestDTO): ResponseEntity<Unit>
 
     @Operation(summary = "Get teacher by ID")
     @GetMapping("{id}")
@@ -33,10 +33,10 @@ interface TeacherApi {
     fun updateTeacher(
         @PathVariable id: Long,
         @Valid @RequestBody requestDTO: TeacherUpdateRequestDTO
-    ): ResponseEntity<Void>
+    ): ResponseEntity<Unit>
 
     @Operation(summary = "Delete teacher by ID")
     @DeleteMapping("{id}")
-    fun deleteTeacher(@PathVariable id: Long): ResponseEntity<Void>
+    fun deleteTeacher(@PathVariable id: Long): ResponseEntity<Unit>
 
 }

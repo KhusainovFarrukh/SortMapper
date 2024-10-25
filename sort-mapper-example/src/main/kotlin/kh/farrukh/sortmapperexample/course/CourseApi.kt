@@ -32,17 +32,17 @@ interface CourseApi {
 
     @PostMapping
     @Operation(summary = "Create a new course")
-    fun createCourse(@Valid @RequestBody requestDTO: CourseCreateRequestDTO): ResponseEntity<Void>
+    fun createCourse(@Valid @RequestBody requestDTO: CourseCreateRequestDTO): ResponseEntity<Unit>
 
     @PutMapping("{id}")
     @Operation(summary = "Update course by ID")
     fun updateCourse(
         @PathVariable id: Long,
         @Valid @RequestBody requestDTO: CourseUpdateRequestDTO
-    ): ResponseEntity<Void>
+    ): ResponseEntity<Unit>
 
     @DeleteMapping("{id}")
     @Operation(summary = "Delete course by ID")
-    fun deleteCourse(@PathVariable id: Long): ResponseEntity<Void>
+    fun deleteCourse(@PathVariable id: Long): ResponseEntity<Unit>
 
 }

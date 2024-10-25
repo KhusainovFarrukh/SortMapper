@@ -18,7 +18,7 @@ class TeacherController(
     override fun getTeachers(pageable: Pageable): ResponseEntity<PagedModel<TeacherResponseDTO>> =
         ResponseEntity.ok(PagedModel(teacherService.getTeachers(pageable)))
 
-    override fun createTeacher(requestDTO: TeacherCreateRequestDTO): ResponseEntity<Void> {
+    override fun createTeacher(requestDTO: TeacherCreateRequestDTO): ResponseEntity<Unit> {
         teacherService.createTeacher(requestDTO)
         return ResponseEntity.status(HttpStatus.CREATED).build()
     }
@@ -29,12 +29,12 @@ class TeacherController(
     override fun updateTeacher(
         id: Long,
         requestDTO: TeacherUpdateRequestDTO
-    ): ResponseEntity<Void> {
+    ): ResponseEntity<Unit> {
         teacherService.updateTeacher(id, requestDTO)
         return ResponseEntity.ok().build()
     }
 
-    override fun deleteTeacher(id: Long): ResponseEntity<Void> {
+    override fun deleteTeacher(id: Long): ResponseEntity<Unit> {
         teacherService.deleteTeacher(id)
         return ResponseEntity.noContent().build()
     }

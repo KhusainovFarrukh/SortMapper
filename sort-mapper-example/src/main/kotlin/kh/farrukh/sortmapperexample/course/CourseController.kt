@@ -18,17 +18,17 @@ class CourseController(
 
     override fun getCourseById(id: Long) = ResponseEntity.ok(courseService.getCourseById(id))
 
-    override fun createCourse(requestDTO: CourseCreateRequestDTO): ResponseEntity<Void> {
+    override fun createCourse(requestDTO: CourseCreateRequestDTO): ResponseEntity<Unit> {
         courseService.createCourse(requestDTO)
         return ResponseEntity.status(HttpStatus.CREATED).build()
     }
 
-    override fun updateCourse(id: Long, requestDTO: CourseUpdateRequestDTO): ResponseEntity<Void> {
+    override fun updateCourse(id: Long, requestDTO: CourseUpdateRequestDTO): ResponseEntity<Unit> {
         courseService.updateCourse(id, requestDTO)
         return ResponseEntity.ok().build()
     }
 
-    override fun deleteCourse(id: Long): ResponseEntity<Void> {
+    override fun deleteCourse(id: Long): ResponseEntity<Unit> {
         courseService.deleteCourse(id)
         return ResponseEntity.noContent().build()
     }
