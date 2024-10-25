@@ -46,7 +46,7 @@ class CourseServiceImpl(
         courseRepo.save(course)
     }
 
-    fun findCourse(id: Long) = courseRepo.findByIdAndDeletedAtIsNull(id)
+    override fun findCourse(id: Long) = courseRepo.findByIdAndDeletedAtIsNull(id)
         ?: throw NotFoundException("Course not found with id: $id")
 
 }

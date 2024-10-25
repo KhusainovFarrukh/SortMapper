@@ -19,4 +19,5 @@ interface CourseService {
 
     fun deleteCourse(id: Long)
 
+    fun findCourse(id: Long): CourseEntity
 }
