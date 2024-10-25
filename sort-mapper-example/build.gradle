@@ -43,9 +43,6 @@ dependencies {
     implementation 'org.mapstruct:mapstruct:1.6.0'
     kapt 'org.mapstruct:mapstruct-processor:1.6.0'
 
-    //Jakarta validation
-    implementation 'jakarta.validation:jakarta.validation-api'
-
     //Spring Boot Validation
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 

@@ -44,7 +44,7 @@ class TeacherServiceImpl(
         teacherRepo.save(teacherEntity)
     }
 
-    private fun findTeacher(id: Long): TeacherEntity =
+    override fun findTeacher(id: Long): TeacherEntity =
         teacherRepo.findByIdAndDeletedAtIsNull(id)
             ?: throw NotFoundException("Teacher not found with id: $id")
 

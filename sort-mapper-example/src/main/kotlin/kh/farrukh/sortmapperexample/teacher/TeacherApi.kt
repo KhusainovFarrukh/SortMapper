@@ -26,17 +26,17 @@ interface TeacherApi {
 
     @Operation(summary = "Get teacher by ID")
     @GetMapping("{id}")
-    fun getTeacherById(id: Long): ResponseEntity<TeacherDetailsResponseDTO>
+    fun getTeacherById(@PathVariable id: Long): ResponseEntity<TeacherDetailsResponseDTO>
 
     @Operation(summary = "Update teacher by ID")
     @PutMapping("{id}")
     fun updateTeacher(
-        id: Long,
+        @PathVariable id: Long,
         @Valid @RequestBody requestDTO: TeacherUpdateRequestDTO
     ): ResponseEntity<Void>
 
     @Operation(summary = "Delete teacher by ID")
     @DeleteMapping("{id}")
-    fun deleteTeacher(id: Long): ResponseEntity<Void>
+    fun deleteTeacher(@PathVariable id: Long): ResponseEntity<Void>
 
 }

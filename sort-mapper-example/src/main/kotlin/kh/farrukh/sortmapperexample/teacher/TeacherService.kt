@@ -19,4 +19,5 @@ interface TeacherService {
 
     fun deleteTeacher(id: Long)
 
+    fun findTeacher(id: Long): TeacherEntity
 }
