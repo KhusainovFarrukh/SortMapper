@@ -2,8 +2,8 @@ package kh.farrukh.sortmapperexample.lesson
 
 import kh.farrukh.sortmapperexample.lesson.model.LessonCreateRequestDTO
 import kh.farrukh.sortmapperexample.lesson.model.LessonUpdateRequestDTO
+import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
-import org.springframework.data.web.PagedModel
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
@@ -14,7 +14,7 @@ class LessonController(
 ) : LessonApi {
 
     override fun getAllLessons(pageable: Pageable) =
-        ResponseEntity.ok(PagedModel(lessonService.getAllLessons(pageable)))
+        ResponseEntity.ok(lessonService.getAllLessons(pageable))
 
     override fun createLesson(requestDTO: LessonCreateRequestDTO): ResponseEntity<Unit> {
         lessonService.createLesson(requestDTO)

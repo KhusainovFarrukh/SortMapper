@@ -9,6 +9,7 @@ import kh.farrukh.sortmapperexample.lesson.model.LessonUpdateRequestDTO
 import kh.farrukh.sortmapperexample.teacher.TeacherService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.data.web.SortArgumentResolver
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
@@ -16,7 +17,8 @@ import java.time.LocalDateTime
 class LessonServiceImpl(
     private val lessonRepo: LessonRepo,
     private val courseService: CourseService,
-    private val teacherService: TeacherService
+    private val teacherService: TeacherService,
+    private val sortArgumentResolver: SortArgumentResolver
 ) : LessonService {
 
     override fun createLesson(requestDTO: LessonCreateRequestDTO) {
