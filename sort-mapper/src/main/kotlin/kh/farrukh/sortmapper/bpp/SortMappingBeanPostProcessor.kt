@@ -1,21 +1,19 @@
 package kh.farrukh.sortmapper.bpp
 
 import kh.farrukh.sortmapper.annotation.SortMapping
-import kh.farrukh.sortmapper.config.SortMapperConfigProperties
 import kh.farrukh.sortmapper.model.MappingValue
 import kh.farrukh.sortmapper.provider.sortmapping.SortMappingProvider
 import org.springframework.beans.factory.config.BeanPostProcessor
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression
 import org.springframework.context.annotation.Configuration
 
 @Configuration
+@ConditionalOnExpression("'\${sort-mapper.work-mode}' != 'FULLY_DISABLED'")
 open class SortMappingBeanPostProcessor(
-    private val sortMapperConfigProperties: SortMapperConfigProperties,
     private val sortMappingProvider: SortMappingProvider
 ) : BeanPostProcessor {
 
     override fun postProcessAfterInitialization(bean: Any, beanName: String): Any? {
-        if (!sortMapperConfigProperties.enabled) return bean
-
         //todo: maybe migrate to kotlin reflection
         val beanClass = bean::class.java
         processSortMappingForClass(beanClass, beanClass)

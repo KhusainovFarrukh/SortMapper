@@ -5,12 +5,14 @@ import kh.farrukh.sortmapper.provider.entityfield.EntityFieldProvider
 import kh.farrukh.sortmapper.provider.sortmapping.DefaultSortMappingProvider
 import kh.farrukh.sortmapper.provider.sortmapping.SortMappingProvider
 import kh.farrukh.sortmapper.resolver.SortMapperSortArgumentResolver
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.web.SortArgumentResolver
 
 @Configuration
+@ConditionalOnExpression("'\${sort-mapper.work-mode}' != 'FULLY_DISABLED'")
 open class SortMapperAutoConfig {
 
     @Bean

@@ -2,6 +2,7 @@ package kh.farrukh.sortmapper.resolver
 
 import kh.farrukh.sortmapper.config.SortMapperConfigProperties
 import kh.farrukh.sortmapper.config.model.ParamValidationType
+import kh.farrukh.sortmapper.config.model.WorkMode
 import kh.farrukh.sortmapper.exception.InvalidSortParamException
 import kh.farrukh.sortmapper.model.ParamMapping
 import kh.farrukh.sortmapper.provider.entityfield.EntityFieldProvider
@@ -31,6 +32,10 @@ class SortMapperSortArgumentResolver(
     ): Sort {
         val originalSort =
             delegate.resolveArgument(parameter, mavContainer, webRequest, binderFactory)
+
+        if (sortMapperConfigProperties.workMode != WorkMode.ENABLED) {
+            return originalSort
+        }
 
         val mappingValue = parameter.method
             ?.let(sortMappingProvider::getMapping)
