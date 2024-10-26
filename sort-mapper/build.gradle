@@ -18,6 +18,12 @@ dependencies {
 
     //Spring Boot autoconfiguration
     implementation 'org.springframework.boot:spring-boot-autoconfigure:3.3.5'
+
+    //Spring Data Commons
+    implementation 'org.springframework.data:spring-data-commons:3.3.5'
+
+    //Spring Web
+    implementation 'org.springframework:spring-web:6.1.14'
 }
 
 test {
