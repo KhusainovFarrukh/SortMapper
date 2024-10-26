@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration
 //todo: do i need to add spring-boot for this
 @ConfigurationProperties(prefix = "sort-mapper")
 open class SortMapperConfigProperties {
-    val enabled: Boolean = true
-    val paramValidationType: ParamValidationType = ParamValidationType.SOFT
+    var enabled: Boolean = true
+    var paramValidationType: ParamValidationType = ParamValidationType.SOFT
 }
