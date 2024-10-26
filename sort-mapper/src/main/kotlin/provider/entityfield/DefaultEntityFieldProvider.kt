@@ -1,49 +1,49 @@
 package kh.farrukh.provider.entityfield
 
 import java.time.temporal.Temporal
-import kotlin.reflect.KClass
-import kotlin.reflect.full.isSubclassOf
-import kotlin.reflect.full.superclasses
 
 class DefaultEntityFieldProvider : EntityFieldProvider {
 
-    override fun getEntityFields(entityClass: KClass<*>): Collection<String> {
+    override fun getEntityFields(entityClass: Class<*>): Collection<String> {
         val fields = mutableSetOf<String>()
-        val visitedClasses = mutableSetOf<KClass<*>>()
+        val visitedClasses = mutableSetOf<Class<*>>()
         handleClass(entityClass, "", fields, visitedClasses)
         return fields
     }
 
     private fun handleClass(
-        clazz: KClass<*>,
+        clazz: Class<*>,
         parentName: String,
         fields: MutableSet<String>,
-        visitedClasses: MutableSet<KClass<*>>
+        visitedClasses: MutableSet<Class<*>>
     ) {
         extractFields(clazz, parentName, fields, visitedClasses)
-        clazz.superclasses.forEach { handleClass(it, parentName, fields, visitedClasses) }
+
+        var superclass = clazz.superclass
+        while (superclass != null) {
+            extractFields(superclass, parentName, fields, visitedClasses)
+            superclass = superclass.superclass
+        }
     }
 
     private fun extractFields(
-        clazz: KClass<*>,
+        clazz: Class<*>,
         parentName: String,
         propertyNames: MutableSet<String>,
-        visitedClasses: MutableSet<KClass<*>>
+        visitedClasses: MutableSet<Class<*>>
     ) {
         if (visitedClasses.contains(clazz)) return
 
         visitedClasses.add(clazz)
 
-        //todo: i think there are not only properties, but also functions (or something else)
-        val fields = clazz.members
+        val fields = clazz.declaredFields
 
         for (field in fields) {
             val fieldName = if (parentName.isEmpty()) field.name else "$parentName.${field.name}"
             propertyNames.add(fieldName)
 
-            //todo: need to use kotlin-reflect correctly or migrate to java-reflect
-            if (field is KClass<*> && !field.isChildrenIgnored()) {
-                handleClass(field, fieldName, propertyNames, visitedClasses)
+            if (!field.type.isChildrenIgnored()) {
+                handleClass(field.type, fieldName, propertyNames, visitedClasses)
             }
         }
 
@@ -52,19 +52,16 @@ class DefaultEntityFieldProvider : EntityFieldProvider {
 
 }
 
-fun KClass<*>.isChildrenIgnored() = isCompanion ||
+fun Class<*>.isChildrenIgnored() = isPrimitive ||
+        isEnum ||
         isSealed ||
-        this == Boolean::class ||
-        this == Byte::class ||
-        this == Short::class ||
-        this == Int::class ||
-        this == Long::class ||
-        this == Float::class ||
-        this == Double::class ||
-        this == Char::class ||
-        this == String::class ||
-        isSubclassOf(Collection::class) ||
-        isSubclassOf(Temporal::class) ||
-        java.isEnum ||
-        java.isPrimitive ||
-        java.isAnnotation
+        equals(Boolean::class.java) ||
+        equals(Byte::class.java) ||
+        equals(Short::class.java) ||
+        equals(Char::class.java) ||
+        equals(Int::class.java) ||
+        equals(Long::class.java) ||
+        equals(Float::class.java) ||
+        equals(Double::class.java) ||
+        equals(String::class.java) ||
+        Temporal::class.java.isAssignableFrom(this)

@@ -1,7 +1,7 @@
 package kh.farrukh.provider.sortmapping
 
 import kh.farrukh.model.MappingValue
-import kotlin.reflect.jvm.internal.impl.metadata.jvm.deserialization.JvmMemberSignature.Method
+import java.lang.reflect.Method
 
 interface SortMappingProvider {
 

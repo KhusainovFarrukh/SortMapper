@@ -12,8 +12,12 @@ repositories {
 dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
 
-    //Kotlin reflection
-    implementation 'org.jetbrains.kotlin:kotlin-reflect:2.0.0'
+    //todo: use some kind of BOM for spring dependencies
+    //Spring Boot
+    implementation 'org.springframework.boot:spring-boot:3.3.5'
+
+    //Spring Boot autoconfiguration
+    implementation 'org.springframework.boot:spring-boot-autoconfigure:3.3.5'
 }
 
 test {
