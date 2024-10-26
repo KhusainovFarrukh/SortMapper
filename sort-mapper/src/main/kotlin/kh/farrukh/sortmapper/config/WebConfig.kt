@@ -1,4 +1,4 @@
-package kh.farrukh.sortmapperexample.common.config
+package kh.farrukh.sortmapper.config
 
 import kh.farrukh.sortmapper.resolver.SortMapperSortArgumentResolver
 import org.springframework.context.annotation.Configuration
@@ -7,7 +7,7 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 @Configuration
-class WebConfig(
+open class WebConfig(
     private val sortMapperSortArgumentResolver: SortMapperSortArgumentResolver
 ) : WebMvcConfigurer {
 

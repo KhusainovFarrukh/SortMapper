@@ -24,6 +24,9 @@ dependencies {
 
     //Spring Web
     implementation 'org.springframework:spring-web:6.1.14'
+
+    //Spring Web MVC
+    implementation 'org.springframework:spring-webmvc:6.1.14'
 }
 
 test {
