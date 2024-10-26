@@ -1,7 +1,7 @@
-package kh.farrukh.kh.farrukh.sortmapper.annotation
+package kh.farrukh.sortmapper.annotation
 
-import kh.farrukh.kh.farrukh.sortmapper.provider.parammapping.NoOpParamMappingProvider
-import kh.farrukh.kh.farrukh.sortmapper.provider.parammapping.ParamMappingProvider
+import kh.farrukh.sortmapper.provider.parammapping.NoOpParamMappingProvider
+import kh.farrukh.sortmapper.provider.parammapping.ParamMappingProvider
 import kotlin.reflect.KClass
 
 @Retention(AnnotationRetention.RUNTIME)

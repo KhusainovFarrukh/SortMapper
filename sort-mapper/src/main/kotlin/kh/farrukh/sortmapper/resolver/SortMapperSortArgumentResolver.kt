@@ -1,11 +1,11 @@
-package kh.farrukh.kh.farrukh.sortmapper.resolver
+package kh.farrukh.sortmapper.resolver
 
-import kh.farrukh.kh.farrukh.sortmapper.config.SortMapperConfigProperties
-import kh.farrukh.kh.farrukh.sortmapper.config.model.ParamValidationType
-import kh.farrukh.kh.farrukh.sortmapper.exception.InvalidSortParamException
-import kh.farrukh.kh.farrukh.sortmapper.model.ParamMapping
-import kh.farrukh.kh.farrukh.sortmapper.provider.entityfield.EntityFieldProvider
-import kh.farrukh.kh.farrukh.sortmapper.provider.sortmapping.SortMappingProvider
+import kh.farrukh.sortmapper.config.SortMapperConfigProperties
+import kh.farrukh.sortmapper.config.model.ParamValidationType
+import kh.farrukh.sortmapper.exception.InvalidSortParamException
+import kh.farrukh.sortmapper.model.ParamMapping
+import kh.farrukh.sortmapper.provider.entityfield.EntityFieldProvider
+import kh.farrukh.sortmapper.provider.sortmapping.SortMappingProvider
 import org.springframework.core.MethodParameter
 import org.springframework.data.domain.Sort
 import org.springframework.data.web.SortArgumentResolver

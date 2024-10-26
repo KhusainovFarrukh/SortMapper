@@ -1,6 +1,6 @@
-package kh.farrukh.kh.farrukh.sortmapper.config
+package kh.farrukh.sortmapper.config
 
-import kh.farrukh.kh.farrukh.sortmapper.config.model.ParamValidationType
+import kh.farrukh.sortmapper.config.model.ParamValidationType
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration
 

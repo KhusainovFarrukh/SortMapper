@@ -1,9 +1,9 @@
-package kh.farrukh.kh.farrukh.sortmapper.bpp
+package kh.farrukh.sortmapper.bpp
 
-import kh.farrukh.kh.farrukh.sortmapper.annotation.SortMapping
-import kh.farrukh.kh.farrukh.sortmapper.config.SortMapperConfigProperties
-import kh.farrukh.kh.farrukh.sortmapper.model.MappingValue
-import kh.farrukh.kh.farrukh.sortmapper.provider.sortmapping.SortMappingProvider
+import kh.farrukh.sortmapper.annotation.SortMapping
+import kh.farrukh.sortmapper.config.SortMapperConfigProperties
+import kh.farrukh.sortmapper.model.MappingValue
+import kh.farrukh.sortmapper.provider.sortmapping.SortMappingProvider
 import org.springframework.beans.factory.config.BeanPostProcessor
 import org.springframework.context.annotation.Configuration
 

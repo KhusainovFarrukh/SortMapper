@@ -1,4 +1,4 @@
-package kh.farrukh.kh.farrukh.sortmapper.annotation
+package kh.farrukh.sortmapper.annotation
 
 @Target(AnnotationTarget.FIELD)
 @Retention(AnnotationRetention.RUNTIME)

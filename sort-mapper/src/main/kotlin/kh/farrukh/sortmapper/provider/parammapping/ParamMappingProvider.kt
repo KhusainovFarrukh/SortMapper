@@ -1,6 +1,6 @@
-package kh.farrukh.kh.farrukh.sortmapper.provider.parammapping
+package kh.farrukh.sortmapper.provider.parammapping
 
-import kh.farrukh.kh.farrukh.sortmapper.model.ParamMapping
+import kh.farrukh.sortmapper.model.ParamMapping
 
 interface ParamMappingProvider {
 

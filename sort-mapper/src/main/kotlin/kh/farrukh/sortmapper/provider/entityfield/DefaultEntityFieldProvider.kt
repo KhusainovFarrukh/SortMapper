@@ -1,4 +1,4 @@
-package kh.farrukh.kh.farrukh.sortmapper.provider.entityfield
+package kh.farrukh.sortmapper.provider.entityfield
 
 import java.time.temporal.Temporal
 
