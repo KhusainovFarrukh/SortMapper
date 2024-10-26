@@ -4,6 +4,7 @@ import kh.farrukh.sortmapper.annotation.SortField
 import kh.farrukh.sortmapper.annotation.SortMapping
 import kh.farrukh.sortmapper.model.ParamMapping
 import java.lang.reflect.Method
+import java.lang.reflect.ParameterizedType
 
 fun getParamMappings(
     sortMapping: SortMapping,
@@ -12,12 +13,30 @@ fun getParamMappings(
     val paramMappings = mutableSetOf<ParamMapping>()
 
     val paramMappingsFromProvider = sortMapping.getParamMappingsFromProvider()
-    val paramMappingsFromReturnType = method.returnType.getParamMappingsFromReturnType()
+    val paramMappingsFromReturnType = method.getActualReturnType().getParamMappingsFromReturnType()
 
     paramMappings.addAll(paramMappingsFromProvider)
     paramMappings.addAll(paramMappingsFromReturnType)
 
     return paramMappings.toList()
+}
+
+fun Method.getActualReturnType(): Class<*> {
+    if (genericReturnType !is ParameterizedType) return returnType
+
+    return (genericReturnType as ParameterizedType).getActualType()
+}
+
+fun ParameterizedType.getActualType(): Class<*> {
+    if (actualTypeArguments.isEmpty()) throw IllegalArgumentException("No actual type arguments found")
+    if (actualTypeArguments.size > 1) throw IllegalArgumentException("More than one actual type argument found")
+
+    val actualType = actualTypeArguments[0]
+
+    if (actualType is ParameterizedType) return actualType.getActualType()
+    if (actualType is Class<*>) return actualType
+
+    throw IllegalArgumentException("Unknown actual type argument type: ${actualType::class.java}")
 }
 
 fun SortMapping.getParamMappingsFromProvider(): List<ParamMapping> {
