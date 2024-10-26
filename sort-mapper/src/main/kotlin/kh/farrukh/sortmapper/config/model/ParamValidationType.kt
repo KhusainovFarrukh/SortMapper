@@ -1,4 +1,4 @@
-package kh.farrukh.config.model
+package kh.farrukh.kh.farrukh.sortmapper.config.model
 
 enum class ParamValidationType {
     /**

@@ -1,4 +1,4 @@
-package kh.farrukh.provider.entityfield
+package kh.farrukh.kh.farrukh.sortmapper.provider.entityfield
 
 interface EntityFieldProvider {
 

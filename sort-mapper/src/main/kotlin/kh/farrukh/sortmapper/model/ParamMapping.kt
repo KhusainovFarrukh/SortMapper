@@ -1,4 +1,4 @@
-package kh.farrukh.model
+package kh.farrukh.kh.farrukh.sortmapper.model
 
 data class ParamMapping(
     val apiParam: String,

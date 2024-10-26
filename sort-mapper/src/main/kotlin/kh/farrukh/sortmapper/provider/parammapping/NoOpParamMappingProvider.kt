@@ -1,6 +1,6 @@
-package kh.farrukh.provider.parammapping
+package kh.farrukh.kh.farrukh.sortmapper.provider.parammapping
 
-import kh.farrukh.model.ParamMapping
+import kh.farrukh.kh.farrukh.sortmapper.model.ParamMapping
 
 class NoOpParamMappingProvider : ParamMappingProvider {
 

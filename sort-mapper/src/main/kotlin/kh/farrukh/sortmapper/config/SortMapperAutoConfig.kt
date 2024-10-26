@@ -1,10 +1,10 @@
-package kh.farrukh.config
+package kh.farrukh.kh.farrukh.sortmapper.config
 
-import kh.farrukh.provider.entityfield.DefaultEntityFieldProvider
-import kh.farrukh.provider.entityfield.EntityFieldProvider
-import kh.farrukh.provider.sortmapping.DefaultSortMappingProvider
-import kh.farrukh.provider.sortmapping.SortMappingProvider
-import kh.farrukh.resolver.SortMapperSortArgumentResolver
+import kh.farrukh.kh.farrukh.sortmapper.provider.entityfield.DefaultEntityFieldProvider
+import kh.farrukh.kh.farrukh.sortmapper.provider.entityfield.EntityFieldProvider
+import kh.farrukh.kh.farrukh.sortmapper.provider.sortmapping.DefaultSortMappingProvider
+import kh.farrukh.kh.farrukh.sortmapper.provider.sortmapping.SortMappingProvider
+import kh.farrukh.kh.farrukh.sortmapper.resolver.SortMapperSortArgumentResolver
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

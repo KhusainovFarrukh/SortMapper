@@ -1,6 +1,6 @@
-package kh.farrukh.provider.sortmapping
+package kh.farrukh.kh.farrukh.sortmapper.provider.sortmapping
 
-import kh.farrukh.model.MappingValue
+import kh.farrukh.kh.farrukh.sortmapper.model.MappingValue
 import java.lang.reflect.Method
 
 interface SortMappingProvider {

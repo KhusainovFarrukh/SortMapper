@@ -1,8 +1,8 @@
-package kh.farrukh.bpp
+package kh.farrukh.kh.farrukh.sortmapper.bpp
 
-import kh.farrukh.annotation.SortField
-import kh.farrukh.annotation.SortMapping
-import kh.farrukh.model.ParamMapping
+import kh.farrukh.kh.farrukh.sortmapper.annotation.SortField
+import kh.farrukh.kh.farrukh.sortmapper.annotation.SortMapping
+import kh.farrukh.kh.farrukh.sortmapper.model.ParamMapping
 import java.lang.reflect.Method
 
 fun getParamMappings(

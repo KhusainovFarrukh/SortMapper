@@ -1,4 +1,4 @@
-package kh.farrukh.exception
+package kh.farrukh.kh.farrukh.sortmapper.exception
 
 //todo: maybe add exception handler (ControllerAdvice)
 class InvalidSortParamException(
