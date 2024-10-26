@@ -20,5 +20,5 @@ server:
 
 #todo: make autocomplete & docs work
 sort-mapper:
-  enabled: true
+  work-mode: ENABLED
   param-validation-type: SOFT
