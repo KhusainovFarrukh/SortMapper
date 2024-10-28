@@ -1,14 +1,14 @@
 package kh.farrukh.sortmapper.bpp
 
 import kh.farrukh.sortmapper.annotation.SortMapping
+import kh.farrukh.sortmapper.config.ConditionalOnNotFullyDisabled
 import kh.farrukh.sortmapper.model.MappingValue
 import kh.farrukh.sortmapper.provider.sortmapping.SortMappingProvider
 import org.springframework.beans.factory.config.BeanPostProcessor
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-@ConditionalOnExpression("'\${sort-mapper.work-mode}' != 'FULLY_DISABLED'")
+@ConditionalOnNotFullyDisabled
 open class SortMappingBeanPostProcessor(
     private val sortMappingProvider: SortMappingProvider
 ) : BeanPostProcessor {

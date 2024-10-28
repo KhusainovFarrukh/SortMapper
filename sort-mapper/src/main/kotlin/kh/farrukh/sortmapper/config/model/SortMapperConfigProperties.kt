@@ -1,7 +1,5 @@
-package kh.farrukh.sortmapper.config
+package kh.farrukh.sortmapper.config.model
 
-import kh.farrukh.sortmapper.config.model.ParamValidationType
-import kh.farrukh.sortmapper.config.model.WorkMode
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration
 
@@ -11,4 +9,5 @@ import org.springframework.context.annotation.Configuration
 open class SortMapperConfigProperties {
     var workMode: WorkMode = WorkMode.ENABLED
     var paramValidationType: ParamValidationType = ParamValidationType.SOFT
+    var exception: ExceptionConfigProperties = ExceptionConfigProperties()
 }

@@ -1,6 +1,6 @@
 package kh.farrukh.sortmapper.resolver
 
-import kh.farrukh.sortmapper.config.SortMapperConfigProperties
+import kh.farrukh.sortmapper.config.model.SortMapperConfigProperties
 import kh.farrukh.sortmapper.config.model.ParamValidationType
 import kh.farrukh.sortmapper.config.model.WorkMode
 import kh.farrukh.sortmapper.exception.InvalidSortParamException
