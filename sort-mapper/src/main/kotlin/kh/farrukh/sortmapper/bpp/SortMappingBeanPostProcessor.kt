@@ -4,6 +4,7 @@ import kh.farrukh.sortmapper.annotation.SortMapping
 import kh.farrukh.sortmapper.config.ConditionalOnNotFullyDisabled
 import kh.farrukh.sortmapper.model.MappingValue
 import kh.farrukh.sortmapper.provider.sortmapping.SortMappingProvider
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.config.BeanPostProcessor
 import org.springframework.context.annotation.Configuration
 
@@ -14,12 +15,14 @@ open class SortMappingBeanPostProcessor(
 ) : BeanPostProcessor {
 
     override fun postProcessAfterInitialization(bean: Any, beanName: String): Any? {
+        log.trace("Processing bean: $beanName")
         //todo: maybe migrate to kotlin reflection
         val beanClass = bean::class.java
         processSortMappingForClass(beanClass, beanClass)
 
         beanClass.interfaces.forEach { processSortMappingForClass(it, beanClass) }
 
+        log.trace("Bean processed: $beanName")
         return bean
     }
 
@@ -27,6 +30,7 @@ open class SortMappingBeanPostProcessor(
         targetClass: Class<*>,
         beanClass: Class<*>
     ) {
+        log.trace("Processing class: ${targetClass.simpleName}")
         for (method in targetClass.declaredMethods) {
             val sortMapping = method.getAnnotation(SortMapping::class.java) ?: continue
             val paramMappings = getParamMappings(sortMapping, method)
@@ -36,6 +40,11 @@ open class SortMappingBeanPostProcessor(
 
             sortMappingProvider.addMapping(keyMethod, mappingValue)
         }
+        log.trace("Class processed: ${targetClass.simpleName}")
+    }
+
+    companion object {
+        private val log = LoggerFactory.getLogger(SortMappingBeanPostProcessor::class.java)
     }
 
 }

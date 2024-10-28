@@ -7,6 +7,7 @@ import kh.farrukh.sortmapper.exception.InvalidSortParamException
 import kh.farrukh.sortmapper.model.ParamMapping
 import kh.farrukh.sortmapper.provider.entityfield.EntityFieldProvider
 import kh.farrukh.sortmapper.provider.sortmapping.SortMappingProvider
+import org.slf4j.LoggerFactory
 import org.springframework.core.MethodParameter
 import org.springframework.data.domain.Sort
 import org.springframework.data.web.SortArgumentResolver
@@ -30,6 +31,7 @@ class SortMapperSortArgumentResolver(
         webRequest: NativeWebRequest,
         binderFactory: WebDataBinderFactory?
     ): Sort {
+        log.trace("Resolving sort argument: parameter = {}, webRequest = {}", parameter, webRequest)
         val originalSort =
             delegate.resolveArgument(parameter, mavContainer, webRequest, binderFactory)
 
@@ -51,7 +53,15 @@ class SortMapperSortArgumentResolver(
         val paramMappingsMap = paramMappings
             .associateBy(ParamMapping::apiParam, ParamMapping::sortField)
 
-        return mapSortParams(originalSort, entityFields, specifiedFields, paramMappingsMap)
+        val result = mapSortParams(originalSort, entityFields, specifiedFields, paramMappingsMap)
+
+        log.trace(
+            "Mapped sort params: parameter = {}, webRequest = {}, result = {}",
+            parameter,
+            webRequest,
+            result
+        )
+        return result;
     }
 
     private fun mapSortParams(
@@ -95,6 +105,10 @@ class SortMapperSortArgumentResolver(
 
         val sortField = paramMappingsMap[property] ?: property
         return Sort.by(Sort.Order(direction, sortField))
+    }
+
+    companion object {
+        private val log = LoggerFactory.getLogger(this::class.java)
     }
 
 }
