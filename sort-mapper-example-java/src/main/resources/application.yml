@@ -17,3 +17,12 @@ spring:
 
 server:
   port: 6061
+
+#todo: make autocomplete & docs work
+sort-mapper:
+  work-mode: ENABLED
+  param-validation-type: SOFT
+  exception:
+    handler-enabled: true
+    http-code: 400
+    stacktrace-enabled: true
