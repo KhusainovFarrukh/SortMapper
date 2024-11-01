@@ -7,8 +7,8 @@ import kh.farrukh.sortmapperexample.teacher.model.TeacherCreateRequestDTO
 import kh.farrukh.sortmapperexample.teacher.model.TeacherDetailsResponseDTO
 import kh.farrukh.sortmapperexample.teacher.model.TeacherResponseDTO
 import kh.farrukh.sortmapperexample.teacher.model.TeacherUpdateRequestDTO
+import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
-import org.springframework.data.web.PagedModel
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -18,7 +18,7 @@ interface TeacherApi {
 
     @Operation(summary = "Get all teachers")
     @GetMapping
-    fun getTeachers(pageable: Pageable): ResponseEntity<PagedModel<TeacherResponseDTO>>
+    fun getTeachers(pageable: Pageable): ResponseEntity<Page<TeacherResponseDTO>>
 
     @Operation(summary = "Create a new teacher")
     @PostMapping

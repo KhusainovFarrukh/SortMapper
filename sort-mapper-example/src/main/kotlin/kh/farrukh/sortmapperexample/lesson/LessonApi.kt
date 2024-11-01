@@ -8,8 +8,8 @@ import kh.farrukh.sortmapperexample.lesson.model.LessonCreateRequestDTO
 import kh.farrukh.sortmapperexample.lesson.model.LessonDetailsResponseDTO
 import kh.farrukh.sortmapperexample.lesson.model.LessonResponseDTO
 import kh.farrukh.sortmapperexample.lesson.model.LessonUpdateRequestDTO
+import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
-import org.springframework.data.web.PagedModel
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -26,7 +26,7 @@ interface LessonApi {
     @SortMapping(entity = LessonEntity::class)
     @GetMapping
     @Operation(summary = "Get all lessons")
-    fun getAllLessons(pageable: Pageable): ResponseEntity<PagedModel<LessonResponseDTO>>
+    fun getAllLessons(pageable: Pageable): ResponseEntity<Page<LessonResponseDTO>>
 
     @PostMapping
     @Operation(summary = "Create a lesson")

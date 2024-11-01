@@ -3,7 +3,6 @@ package kh.farrukh.sortmapperexample.course
 import kh.farrukh.sortmapperexample.course.model.CourseCreateRequestDTO
 import kh.farrukh.sortmapperexample.course.model.CourseUpdateRequestDTO
 import org.springframework.data.domain.Pageable
-import org.springframework.data.web.PagedModel
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
@@ -14,7 +13,7 @@ class CourseController(
 ) : CourseApi {
 
     override fun getCourses(pageable: Pageable) =
-        ResponseEntity.ok(PagedModel(courseService.getCourses(pageable)))
+        ResponseEntity.ok(courseService.getCourses(pageable))
 
     override fun getCourseById(id: Long) = ResponseEntity.ok(courseService.getCourseById(id))
 
