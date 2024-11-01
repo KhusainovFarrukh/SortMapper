@@ -1,5 +1,8 @@
 package kh.farrukh.sortmapper.config.model
 
+/**
+ * Enum class to specify the type of validation to be done on sort parameters.
+ */
 enum class ParamValidationType {
     /**
      * Allows only specified sort parameters (via @SortMapping annotation)

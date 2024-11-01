@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import java.time.LocalDateTime
 
+/**
+ * Exception handler for handling [InvalidSortParamException].
+ */
 @Component
 @ConditionalOnProperty(
     "sort-mapper.exception.handler-enabled",

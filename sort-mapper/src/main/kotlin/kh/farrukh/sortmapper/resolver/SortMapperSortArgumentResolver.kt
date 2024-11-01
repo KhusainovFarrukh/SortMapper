@@ -15,6 +15,12 @@ import org.springframework.web.bind.support.WebDataBinderFactory
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.web.method.support.ModelAndViewContainer
 
+/**
+ * Custom implementation of Spring's [SortArgumentResolver] which maps the sort parameters
+ * according to the specified mappings.
+ * Delegates to the original [SortArgumentResolver] to resolve the original sort.
+ * Then simply maps the property and direction will remain the same.
+ */
 class SortMapperSortArgumentResolver(
     private val delegate: SortArgumentResolver,
     private val sortMappingProvider: SortMappingProvider,
@@ -22,6 +28,9 @@ class SortMapperSortArgumentResolver(
     private val sortMapperConfigProperties: SortMapperConfigProperties
 ) : SortArgumentResolver {
 
+    /**
+     * Delegates to the original [SortArgumentResolver].
+     */
     override fun supportsParameter(parameter: MethodParameter) =
         delegate.supportsParameter(parameter)
 

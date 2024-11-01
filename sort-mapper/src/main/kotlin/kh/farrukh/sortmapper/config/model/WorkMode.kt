@@ -1,5 +1,8 @@
 package kh.farrukh.sortmapper.config.model
 
+/**
+ * Enum class to specify the work mode of the SortMapper.
+ */
 enum class WorkMode {
     /**
      * ENABLED mode means that all features are enabled.

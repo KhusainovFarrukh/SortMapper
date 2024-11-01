@@ -3,6 +3,9 @@ package kh.farrukh.sortmapper.config.model
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration
 
+/**
+ * Configuration properties for SortMapper.
+ */
 //TODO by farrukh_kh on 01 Nov 2024: Make YAML autocomplete work for this configs
 @Configuration
 @ConfigurationProperties(prefix = "sort-mapper")

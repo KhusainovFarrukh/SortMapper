@@ -14,6 +14,10 @@ import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Role
 import org.springframework.data.web.SortArgumentResolver
 
+/**
+ * Auto configuration for SortMapper.
+ * Provides default beans for SortMapper.
+ */
 @AutoConfiguration
 @ComponentScan("kh.farrukh.sortmapper")
 @Role(BeanDefinition.ROLE_INFRASTRUCTURE)

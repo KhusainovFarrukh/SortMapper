@@ -2,6 +2,11 @@ package kh.farrukh.sortmapper.provider.entityfield
 
 import java.time.temporal.Temporal
 
+/**
+ * Default implementation of [EntityFieldProvider] to extract the fields of an entity class.
+ * It will extract all fields of the given entity class and its superclasses.
+ * It will ignore primitive types, enums, sealed classes, etc.
+ */
 class DefaultEntityFieldProvider : EntityFieldProvider {
 
     override fun getEntityFields(entityClass: Class<*>): Collection<String> {

@@ -8,6 +8,11 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.config.BeanPostProcessor
 import org.springframework.context.annotation.Configuration
 
+/**
+ * Bean post processor to process [SortMapping] annotations and add mappings to [SortMappingProvider].
+ *
+ * @param sortMappingProvider The [SortMappingProvider] to add mappings to.
+ */
 @Configuration
 @ConditionalOnNotFullyDisabled
 open class SortMappingBeanPostProcessor(
