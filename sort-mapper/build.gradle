@@ -107,6 +107,11 @@ tasks.jar {
 }
 
 jreleaser {
+    project {
+        name.set("SortMapper")
+        description.set("Map your sort parameters like you want")
+        copyright.set("Farrukh Khusainov")
+    }
     deploy {
         maven {
             mavenCentral {
