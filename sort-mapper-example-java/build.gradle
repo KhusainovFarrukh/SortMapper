@@ -50,10 +50,13 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
 
     //Kotlin
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.0'
+//    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.0'
 
     //SortMapper (local version for testing only)
-    implementation files('local-libs/sort-mapper-0.0.1-SNAPSHOT-local.jar')
+//    implementation files('local-libs/sort-mapper-0.0.1-SNAPSHOT-local.jar')
+
+    //SortMapper (local version with kotlin for testing only)
+    implementation files('local-libs/sort-mapper-0.0.1-SNAPSHOT-with-kotlin-local.jar')
 
 }
 
