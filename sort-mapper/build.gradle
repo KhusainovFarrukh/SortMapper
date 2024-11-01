@@ -12,21 +12,23 @@ repositories {
 dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
 
-    //todo: use some kind of BOM for spring dependencies
+    //Spring BOM
+    implementation platform('org.springframework.boot:spring-boot-dependencies:3.3.5')
+
     //Spring Boot
-    implementation 'org.springframework.boot:spring-boot:3.3.5'
+    compileOnly 'org.springframework.boot:spring-boot'
 
     //Spring Boot autoconfiguration
-    implementation 'org.springframework.boot:spring-boot-autoconfigure:3.3.5'
+    compileOnly 'org.springframework.boot:spring-boot-autoconfigure'
 
     //Spring Data Commons
-    implementation 'org.springframework.data:spring-data-commons:3.3.5'
+    compileOnly 'org.springframework.data:spring-data-commons'
 
     //Spring Web
-    implementation 'org.springframework:spring-web:6.1.14'
+    compileOnly 'org.springframework:spring-web'
 
     //Spring Web MVC
-    implementation 'org.springframework:spring-webmvc:6.1.14'
+    compileOnly 'org.springframework:spring-webmvc'
 }
 
 test {
