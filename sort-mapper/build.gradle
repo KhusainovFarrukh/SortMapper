@@ -1,9 +1,14 @@
+import org.gradle.api.publish.maven.MavenPublication
+
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.0.0'
+    id 'maven-publish'
+    id 'org.jreleaser' version '1.5.1'
+    id 'signing'
 }
 
-group = 'kh.farrukh'
-version = '0.0.1'
+group = 'io.github.khusainovfarrukh'
+version = '0.0.1-test'
 
 repositories {
     mavenCentral()
@@ -47,5 +52,81 @@ tasks.register("withKotlinJar", Jar) {
         configurations.runtimeClasspath.findAll {
             it.name.startsWith('kotlin-stdlib')
         }.collect(({ zipTree(it) } as Closure<Object>))
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            groupId = "io.github.khusainovfarrukh"
+            artifactId = "sort-mapper"
+
+            pom {
+                packaging = "jar"
+                name.set("sort-mapper")
+                description.set("Map your sort parameters like you want")
+                url.set("https://github.com/khusainovfarrukh/sort-mapper")
+                inceptionYear.set("2024")
+                licenses {
+                    license {
+                        name.set("MIT")
+                        url.set("https://opensource.org/licenses/MIT")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("farrukh_kh")
+                        name.set("Farrukh Khusainov")
+                        email.set("farrukhbekkhusainov@gmail.com")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git@github.com:khusainovfarrukh/sort-mapper.git")
+                    developerConnection.set("scm:git:ssh:git@github.com:khusainovfarrukh/sort-mapper.git")
+                    url.set("https://github.com/khusainovfarrukh/sort-mapper")
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url = layout.buildDirectory.dir("staging-deploy").get().asFile.toURI()
+        }
+    }
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+tasks.jar {
+    enabled = true
+    archiveClassifier.set("")
+}
+
+jreleaser {
+    project {
+        copyright.set("Farrukh Khusainov")
+    }
+    gitRootSearch.set(true)
+    signing {
+        active.set(org.jreleaser.model.Active.ALWAYS)
+        armored.set(true)
+    }
+    deploy {
+        maven {
+            nexus2 {
+                create("maven-central") {
+                    active.set(org.jreleaser.model.Active.ALWAYS)
+                    url.set("https://s01.oss.sonatype.org/service/local")
+                    //todo set to true both after successful release
+                    closeRepository.set(false)
+                    releaseRepository.set(false)
+                    stagingRepositories.add("build/staging-deploy")
+                }
+            }
+        }
     }
 }
