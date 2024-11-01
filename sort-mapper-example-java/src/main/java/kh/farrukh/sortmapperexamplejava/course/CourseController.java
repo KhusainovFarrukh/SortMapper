@@ -5,8 +5,8 @@ import kh.farrukh.sortmapperexamplejava.course.model.CourseDetailsResponseDTO;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseResponseDTO;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseUpdateRequestDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +18,8 @@ public class CourseController implements CourseApi {
   private final CourseService courseService;
 
   @Override
-  public ResponseEntity<PagedModel<CourseResponseDTO>> getCourses(Pageable pageable) {
-    return ResponseEntity.ok(new PagedModel<>(courseService.getCourses(pageable)));
+  public ResponseEntity<Page<CourseResponseDTO>> getCourses(Pageable pageable) {
+    return ResponseEntity.ok(courseService.getCourses(pageable));
   }
 
   @Override

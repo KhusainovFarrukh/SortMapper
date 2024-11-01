@@ -7,8 +7,8 @@ import kh.farrukh.sortmapperexamplejava.teacher.model.TeacherCreateRequestDTO;
 import kh.farrukh.sortmapperexamplejava.teacher.model.TeacherDetailsResponseDTO;
 import kh.farrukh.sortmapperexamplejava.teacher.model.TeacherResponseDTO;
 import kh.farrukh.sortmapperexamplejava.teacher.model.TeacherUpdateRequestDTO;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +24,7 @@ public interface TeacherApi {
 
   @Operation(summary = "Get all teachers")
   @GetMapping
-  ResponseEntity<PagedModel<TeacherResponseDTO>> getTeachers(Pageable pageable);
+  ResponseEntity<Page<TeacherResponseDTO>> getTeachers(Pageable pageable);
 
   @Operation(summary = "Get teacher by id")
   @GetMapping("{id}")

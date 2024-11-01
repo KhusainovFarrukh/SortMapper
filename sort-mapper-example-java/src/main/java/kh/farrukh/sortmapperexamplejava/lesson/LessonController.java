@@ -5,8 +5,8 @@ import kh.farrukh.sortmapperexamplejava.lesson.model.LessonDetailsResponseDTO;
 import kh.farrukh.sortmapperexamplejava.lesson.model.LessonResponseDTO;
 import kh.farrukh.sortmapperexamplejava.lesson.model.LessonUpdateRequestDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +18,8 @@ public class LessonController implements LessonApi {
   private final LessonService lessonService;
 
   @Override
-  public ResponseEntity<PagedModel<LessonResponseDTO>> getLessons(Pageable pageable) {
-    return ResponseEntity.ok(new PagedModel<>(lessonService.getLessons(pageable)));
+  public ResponseEntity<Page<LessonResponseDTO>> getLessons(Pageable pageable) {
+    return ResponseEntity.ok(lessonService.getLessons(pageable));
   }
 
   @Override

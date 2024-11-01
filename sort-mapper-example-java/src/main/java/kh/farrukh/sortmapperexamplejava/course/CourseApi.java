@@ -7,8 +7,8 @@ import kh.farrukh.sortmapperexamplejava.course.model.CourseCreateRequestDTO;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseDetailsResponseDTO;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseResponseDTO;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseUpdateRequestDTO;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +24,7 @@ public interface CourseApi {
 
   @GetMapping
   @Operation(summary = "Get all courses")
-  ResponseEntity<PagedModel<CourseResponseDTO>> getCourses(Pageable pageable);
+  ResponseEntity<Page<CourseResponseDTO>> getCourses(Pageable pageable);
 
   @GetMapping("{id}")
   @Operation(summary = "Get course by id")

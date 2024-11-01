@@ -5,8 +5,8 @@ import kh.farrukh.sortmapperexamplejava.teacher.model.TeacherDetailsResponseDTO;
 import kh.farrukh.sortmapperexamplejava.teacher.model.TeacherResponseDTO;
 import kh.farrukh.sortmapperexamplejava.teacher.model.TeacherUpdateRequestDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +18,8 @@ public class TeacherController implements TeacherApi {
   private final TeacherService teacherService;
 
   @Override
-  public ResponseEntity<PagedModel<TeacherResponseDTO>> getTeachers(Pageable pageable) {
-    return ResponseEntity.ok(new PagedModel<>(teacherService.getTeachers(pageable)));
+  public ResponseEntity<Page<TeacherResponseDTO>> getTeachers(Pageable pageable) {
+    return ResponseEntity.ok(teacherService.getTeachers(pageable));
   }
 
   @Override
