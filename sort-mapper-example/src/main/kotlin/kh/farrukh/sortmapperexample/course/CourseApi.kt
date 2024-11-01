@@ -3,6 +3,7 @@ package kh.farrukh.sortmapperexample.course
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
+import kh.farrukh.sortmapper.annotation.SortMapping
 import kh.farrukh.sortmapperexample.course.model.*
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
@@ -24,6 +25,7 @@ interface CourseApi {
     @Operation(summary = "Get all courses")
     fun getCourses(pageable: Pageable): ResponseEntity<PagedModel<CourseResponseDTO>>
 
+    @SortMapping(entity = CourseEntity::class)
     @GetMapping("/short-info")
     @Operation(summary = "Get all courses with short info")
     fun getCoursesShortInfo(sort: Sort): ResponseEntity<List<CourseShortInfoResponseDTO>>
