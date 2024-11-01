@@ -56,8 +56,8 @@ tasks.register("withKotlinJar", Jar) {
 publishing {
     publications {
         maven(MavenPublication) {
-            artifact jar
-            artifact tasks.withKotlinJar
+            from components.java
+            artifact(tasks.named("withKotlinJar").get())
 
             groupId = "io.github.khusainovfarrukh"
             artifactId = "sort-mapper"
