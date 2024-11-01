@@ -1,8 +1,10 @@
 package kh.farrukh.sortmapperexample.course
 
 import kh.farrukh.sortmapperexample.course.model.CourseCreateRequestDTO
+import kh.farrukh.sortmapperexample.course.model.CourseShortInfoResponseDTO
 import kh.farrukh.sortmapperexample.course.model.CourseUpdateRequestDTO
 import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
 import org.springframework.data.web.PagedModel
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -15,6 +17,10 @@ class CourseController(
 
     override fun getCourses(pageable: Pageable) =
         ResponseEntity.ok(PagedModel(courseService.getCourses(pageable)))
+
+    override fun getCoursesShortInfo(sort: Sort): ResponseEntity<List<CourseShortInfoResponseDTO>> {
+        return ResponseEntity.ok(courseService.getCoursesShortInfo(sort))
+    }
 
     override fun getCourseById(id: Long) = ResponseEntity.ok(courseService.getCourseById(id))
 
