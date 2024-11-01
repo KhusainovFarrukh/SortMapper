@@ -8,7 +8,7 @@ plugins {
 }
 
 group = 'io.github.khusainovfarrukh'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1-test'
 
 repositories {
     mavenCentral()
@@ -112,13 +112,17 @@ jreleaser {
         description.set("Map your sort parameters like you want")
         copyright.set("Farrukh Khusainov")
     }
+    signing {
+        active = 'ALWAYS'
+        armored = true
+    }
     deploy {
         maven {
             mavenCentral {
                 app {
                     active = 'ALWAYS'
                     url = 'https://central.sonatype.com/api/v1/publisher'
-                    stagingRepository('target/staging-deploy')
+                    stagingRepository('build/staging-deploy')
                 }
             }
         }
