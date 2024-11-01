@@ -56,7 +56,10 @@ dependencies {
 //    implementation files('local-libs/sort-mapper-0.0.1-local.jar')
 
     //SortMapper (local version with kotlin for testing only)
-    implementation files('local-libs/sort-mapper-0.0.1-with-kotlin-local.jar')
+//    implementation files('local-libs/sort-mapper-0.0.1-with-kotlin-local.jar')
+
+    //SortMapper
+    implementation 'io.github.khusainovfarrukh:sort-mapper:0.0.1-rc1:with-kotlin'
 
 }
 
