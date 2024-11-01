@@ -1,11 +1,14 @@
 package kh.farrukh.sortmapperexamplejava.course;
 
+import java.util.List;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseCreateRequestDTO;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseDetailsResponseDTO;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseResponseDTO;
+import kh.farrukh.sortmapperexamplejava.course.model.CourseShortInfoResponseDTO;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseUpdateRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +23,11 @@ public class CourseController implements CourseApi {
   @Override
   public ResponseEntity<PagedModel<CourseResponseDTO>> getCourses(Pageable pageable) {
     return ResponseEntity.ok(new PagedModel<>(courseService.getCourses(pageable)));
+  }
+
+  @Override
+  public ResponseEntity<List<CourseShortInfoResponseDTO>> getCoursesShortInfo(Sort sort) {
+    return ResponseEntity.ok(courseService.getCoursesShortInfo(sort));
   }
 
   @Override

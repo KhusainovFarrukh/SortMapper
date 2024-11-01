@@ -3,11 +3,15 @@ package kh.farrukh.sortmapperexamplejava.course;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import java.util.List;
+import kh.farrukh.sortmapper.annotation.SortMapping;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseCreateRequestDTO;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseDetailsResponseDTO;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseResponseDTO;
+import kh.farrukh.sortmapperexamplejava.course.model.CourseShortInfoResponseDTO;
 import kh.farrukh.sortmapperexamplejava.course.model.CourseUpdateRequestDTO;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,6 +29,11 @@ public interface CourseApi {
   @GetMapping
   @Operation(summary = "Get all courses")
   ResponseEntity<PagedModel<CourseResponseDTO>> getCourses(Pageable pageable);
+
+  @SortMapping(entity = CourseEntity.class)
+  @GetMapping("short-info")
+  @Operation(summary = "Get all courses with short info")
+  ResponseEntity<List<CourseShortInfoResponseDTO>> getCoursesShortInfo(Sort sort);
 
   @GetMapping("{id}")
   @Operation(summary = "Get course by id")
