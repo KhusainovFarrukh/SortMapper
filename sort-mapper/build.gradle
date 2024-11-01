@@ -3,12 +3,12 @@ import org.gradle.api.publish.maven.MavenPublication
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.0.0'
     id 'maven-publish'
-    id 'org.jreleaser' version '1.5.1'
+    id 'org.jreleaser' version '1.15.0'
     id 'signing'
 }
 
 group = 'io.github.khusainovfarrukh'
-version = '0.0.1-test'
+version = '0.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -108,23 +108,17 @@ tasks.jar {
 
 jreleaser {
     project {
+        name.set("SortMapper")
+        description.set("Map your sort parameters like you want")
         copyright.set("Farrukh Khusainov")
-    }
-    gitRootSearch.set(true)
-    signing {
-        active.set(org.jreleaser.model.Active.ALWAYS)
-        armored.set(true)
     }
     deploy {
         maven {
-            nexus2 {
-                create("maven-central") {
-                    active.set(org.jreleaser.model.Active.ALWAYS)
-                    url.set("https://s01.oss.sonatype.org/service/local")
-                    //todo set to true both after successful release
-                    closeRepository.set(false)
-                    releaseRepository.set(false)
-                    stagingRepositories.add("build/staging-deploy")
+            mavenCentral {
+                app {
+                    active = 'ALWAYS'
+                    url = 'https://central.sonatype.com/api/v1/publisher'
+                    stagingRepository('target/staging-deploy')
                 }
             }
         }
