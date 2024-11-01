@@ -112,6 +112,10 @@ jreleaser {
         description.set("Map your sort parameters like you want")
         copyright.set("Farrukh Khusainov")
     }
+    signing {
+        active = 'ALWAYS'
+        armored = true
+    }
     deploy {
         maven {
             mavenCentral {
