@@ -1,9 +1,8 @@
 name: Publish package to the Maven Central Repository
 on:
-  push:
-    tags:
-      - v*
   pull_request:
+    branches: [ main ]
+  push:
     branches: [ main ]
 jobs:
   publish:
@@ -21,6 +20,7 @@ jobs:
         working-directory: ./sort-mapper
         run: ./gradlew :publish
       - name: Publish package to maven central
+        if: github.event_name == 'push'
         working-directory: ./sort-mapper
         env:
           JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_APP_USERNAME: ${{ secrets.JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_APP_USERNAME }}
