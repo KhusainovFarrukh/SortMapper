@@ -65,7 +65,7 @@ fun Class<*>.getParamMappings(): List<ParamMapping> {
         .map { field ->
             val sortField = field.getAnnotation(SortField::class.java)
 
-            //todo: handle hierarchical fields (e.g. consumerStatus.nameUz)
+            //TODO by farrukh on 01 Nov 2024: Add support for hierarchical fields (e.g. consumerStatus.nameUz)
             val apiParam = field.name
             val entityProperty = sortField.value
 

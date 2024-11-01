@@ -43,8 +43,9 @@ class SortMapperSortArgumentResolver(
             ?.let(sortMappingProvider::getMapping)
             ?: return originalSort
 
-        //todo: entityFields can be cached
-        //todo: entityFields now must handle courseTeacherFirstName for course.teacher.firstName cases
+        //TODO by farrukh_kh on 01 Nov 2024: Think about using some kind of cache for entityFields,
+        // because it is not efficient to calculate them every time using reflection
+        //TODO by farrukh_kh on 01 Nov 2024: entityField must handle courseTeacherFirstName for course.teacher.firstName cases
         val entityFields = entityFieldProvider.getEntityFields(mappingValue.entityClass).toSet()
 
         val paramMappings = mappingValue.paramMappings
@@ -75,7 +76,6 @@ class SortMapperSortArgumentResolver(
         for (order in originalSort) {
             val property = order.property
 
-            //todo: move validation part to another bean (make configurable by implementing interface)
             val validSortParams = when (sortMapperConfigProperties.paramValidationType) {
                 //only specified fields are allowed
                 ParamValidationType.STRICT -> specifiedFields
@@ -85,7 +85,6 @@ class SortMapperSortArgumentResolver(
             }
 
             if (!validSortParams.contains(property)) {
-                //todo: custom exception
                 throw InvalidSortParamException(property, validSortParams)
             }
 

@@ -16,7 +16,7 @@ open class SortMappingBeanPostProcessor(
 
     override fun postProcessAfterInitialization(bean: Any, beanName: String): Any? {
         log.trace("Processing bean: $beanName")
-        //todo: maybe migrate to kotlin reflection
+        //TODO by farrukh_kh on 01 Nov 2024: Think about migrating to Kotlin reflection
         val beanClass = bean::class.java
         processSortMappingForClass(beanClass, beanClass)
 
