@@ -1,5 +1,3 @@
-import org.gradle.api.publish.maven.MavenPublication
-
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.0.0'
     id 'maven-publish'
@@ -8,7 +6,7 @@ plugins {
 }
 
 group = 'io.github.khusainovfarrukh'
-version = '0.0.1-alpha'
+version = '0.0.1-alpha1'
 
 repositories {
     mavenCentral()
@@ -58,45 +56,15 @@ tasks.register("withKotlinJar", Jar) {
 publishing {
     publications {
         maven(MavenPublication) {
-            from components.java
+            artifact jar
+            artifact tasks.withKotlinJar
+
             groupId = "io.github.khusainovfarrukh"
             artifactId = "sort-mapper"
 
             pom {
                 packaging = "jar"
                 name.set("sort-mapper")
-                description.set("Map your sort parameters like you want")
-                url.set("https://github.com/khusainovfarrukh/sort-mapper")
-                inceptionYear.set("2024")
-                licenses {
-                    license {
-                        name.set("MIT")
-                        url.set("https://opensource.org/licenses/MIT")
-                    }
-                }
-                developers {
-                    developer {
-                        id.set("farrukh_kh")
-                        name.set("Farrukh Khusainov")
-                        email.set("farrukhbekkhusainov@gmail.com")
-                    }
-                }
-                scm {
-                    connection.set("scm:git:git@github.com:khusainovfarrukh/sort-mapper.git")
-                    developerConnection.set("scm:git:ssh:git@github.com:khusainovfarrukh/sort-mapper.git")
-                    url.set("https://github.com/khusainovfarrukh/sort-mapper")
-                }
-            }
-        }
-
-        maven(MavenPublication) {
-            artifact(tasks.named("withKotlinJar").get())
-            groupId = "io.github.khusainovfarrukh"
-            artifactId = "sort-mapper-java"
-
-            pom {
-                packaging = "jar"
-                name.set("sort-mapper-java")
                 description.set("Map your sort parameters like you want")
                 url.set("https://github.com/khusainovfarrukh/sort-mapper")
                 inceptionYear.set("2024")
