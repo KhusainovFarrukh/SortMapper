@@ -17,3 +17,11 @@ spring:
 
 server:
   port: 6060
+
+sort-mapper:
+  work-mode: ENABLED
+  param-validation-type: SOFT
+  exception:
+    handler-enabled: true
+    http-code: 400
+    stacktrace-enabled: true

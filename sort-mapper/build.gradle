@@ -11,6 +11,24 @@ repositories {
 
 dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
+
+    //Spring BOM
+    implementation platform('org.springframework.boot:spring-boot-dependencies:3.3.5')
+
+    //Spring Boot
+    compileOnly 'org.springframework.boot:spring-boot'
+
+    //Spring Boot autoconfiguration
+    compileOnly 'org.springframework.boot:spring-boot-autoconfigure'
+
+    //Spring Data Commons
+    compileOnly 'org.springframework.data:spring-data-commons'
+
+    //Spring Web
+    compileOnly 'org.springframework:spring-web'
+
+    //Spring Web MVC
+    compileOnly 'org.springframework:spring-webmvc'
 }
 
 test {
@@ -18,4 +36,16 @@ test {
 }
 kotlin {
     jvmToolchain(21)
+}
+
+tasks.register("withKotlinJar", Jar) {
+    archiveClassifier.set("with-kotlin")
+    from(sourceSets.main.output)
+
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll {
+            it.name.startsWith('kotlin-stdlib')
+        }.collect(({ zipTree(it) } as Closure<Object>))
+    }
 }

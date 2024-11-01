@@ -3,6 +3,7 @@ package kh.farrukh.sortmapperexample.lesson
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
+import kh.farrukh.sortmapper.annotation.SortMapping
 import kh.farrukh.sortmapperexample.lesson.model.LessonCreateRequestDTO
 import kh.farrukh.sortmapperexample.lesson.model.LessonDetailsResponseDTO
 import kh.farrukh.sortmapperexample.lesson.model.LessonResponseDTO
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 @RequestMapping("/api/v1/lessons")
 interface LessonApi {
 
+    @SortMapping(entity = LessonEntity::class)
     @GetMapping
     @Operation(summary = "Get all lessons")
     fun getAllLessons(pageable: Pageable): ResponseEntity<PagedModel<LessonResponseDTO>>

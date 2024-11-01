@@ -1,13 +1,11 @@
 package kh.farrukh.sortmapperexample.course
 
 import kh.farrukh.sortmapperexample.common.exception.NotFoundException
-import kh.farrukh.sortmapperexample.course.model.CourseCreateRequestDTO
-import kh.farrukh.sortmapperexample.course.model.CourseDetailsResponseDTO
-import kh.farrukh.sortmapperexample.course.model.CourseResponseDTO
-import kh.farrukh.sortmapperexample.course.model.CourseUpdateRequestDTO
+import kh.farrukh.sortmapperexample.course.model.*
 import kh.farrukh.sortmapperexample.teacher.TeacherService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
@@ -48,5 +46,9 @@ class CourseServiceImpl(
 
     override fun findCourse(id: Long) = courseRepo.findByIdAndDeletedAtIsNull(id)
         ?: throw NotFoundException("Course not found with id: $id")
+
+    override fun getCoursesShortInfo(sort: Sort): List<CourseShortInfoResponseDTO> {
+        return courseRepo.findAllShortInfo(sort)
+    }
 
 }

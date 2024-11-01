@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: sort-mapper-example-java
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sort-mapper-example-java
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+server:
+  port: 6061
+
+sort-mapper:
+  work-mode: ENABLED
+  param-validation-type: SOFT
+  exception:
+    handler-enabled: true
+    http-code: 400
+    stacktrace-enabled: true

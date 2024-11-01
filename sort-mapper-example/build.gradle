@@ -44,6 +44,12 @@ dependencies {
 
     //Swagger
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+
+    //SortMapper (local version for testing only)
+    implementation files('local-libs/sort-mapper-0.0.1-SNAPSHOT-local.jar')
+
+    //SortMapper (local version with kotlin for testing only)
+//    implementation files('local-libs/sort-mapper-0.0.1-SNAPSHOT-with-kotlin-local.jar')
 }
 
 kotlin {

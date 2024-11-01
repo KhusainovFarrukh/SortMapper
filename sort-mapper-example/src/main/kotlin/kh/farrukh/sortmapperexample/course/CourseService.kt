@@ -1,11 +1,9 @@
 package kh.farrukh.sortmapperexample.course
 
-import kh.farrukh.sortmapperexample.course.model.CourseCreateRequestDTO
-import kh.farrukh.sortmapperexample.course.model.CourseDetailsResponseDTO
-import kh.farrukh.sortmapperexample.course.model.CourseResponseDTO
-import kh.farrukh.sortmapperexample.course.model.CourseUpdateRequestDTO
+import kh.farrukh.sortmapperexample.course.model.*
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
 
 interface CourseService {
 
@@ -20,4 +18,6 @@ interface CourseService {
     fun deleteCourse(id: Long)
 
     fun findCourse(id: Long): CourseEntity
+
+    fun getCoursesShortInfo(sort: Sort): List<CourseShortInfoResponseDTO>
 }
