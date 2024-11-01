@@ -120,7 +120,8 @@ jreleaser {
             nexus2 {
                 create("maven-central") {
                     active.set(org.jreleaser.model.Active.ALWAYS)
-                    url.set("https://s01.oss.sonatype.org/service/local")
+                    url.set("https://oss.sonatype.org/service/local/")
+                    snapshotUrl.set("https://oss.sonatype.org/content/repositories/snapshots/")
                     //todo set to true both after successful release
                     closeRepository.set(false)
                     releaseRepository.set(false)
