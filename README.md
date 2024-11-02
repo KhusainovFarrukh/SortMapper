@@ -33,40 +33,70 @@ You can see changes and earlier versions on [CHANGELOG.md](https://github.com/Kh
 
 ## Features
 
-#todo
+- Mapping sort parameters
+- Validation invalid sort parameters
 
 ## Installation
 
-#todo
+Simply add to your dependencies list. For example, in Gradle:
+
+```
+dependencies {
+    //Other dependencies...
+
+    //SortMapper
+    implementation("io.github.khusainovfarrukh:sort-mapper:0.0.1")
+}
+```
 
 ## Usage
 
-#todo
+Add @SortMapping annotation to method/function for which you want to enable mapping:
+
+P/S: entity is optional. you can read about it on javadocs/comments written on @SortMapping source code
+
+```kotlin
+    @SortMapping(entity = LessonEntity::class)
+    @GetMapping
+    @Operation(summary = "Get all lessons")
+    fun getAllLessons(pageable: Pageable): ResponseEntity<PagedModel<LessonResponseDTO>>
+```
+
+On your response model map your sort parameters with @SortField annoation. In our example LessonResponseDTO looks like:
+
+```kotlin
+data class LessonResponseDTO(
+    val id: Long,
+    val title: String,
+    val description: String?,
+    val courseId: Long,
+    val courseTitle: String,
+    @SortField("course.teacher.firstName")
+    val teacherFirstName: String,
+    @SortField("course.teacher.lastName")
+    val teacherLastName: String,
+    val helperTeacherId: Long?,
+    val helperTeacherFirstName: String?,
+    val helperTeacherLastName: String?
+)
+```
+
+That's all! Reay to use!
+
+For detailed example and other use-cases see sort-mapper-example (Kotlin) and sort-mapper-example-java (Java) projects on this git repository.
 
 ## Tech stack
 
 SortMapper is developed using Kotlin programming language and Spring framework. The full tech stack:
 
-#todo
-
   - [Spring Boot](https://spring.io/projects/spring-boot)
-  - [Spring Security](https://spring.io/projects/spring-security) for authentication and authorization
-  - [JWT](https://auth0.com/docs/secure/tokens/json-web-tokens) for tokens and share security information between two parties — a client and a server
-  - [AWS S3](https://aws.amazon.com/s3/) for storing images and other files
-  - [Docker](https://www.docker.com/) for packaging into container
-  - [GitHub Actions](https://github.com/features/actions) for CI/CD
-  - [JUnit 5](https://junit.org/junit5/) for unit and integration tests
-  - [TestContainer](https://www.testcontainers.org/) for using Docker images in integration tests
-  - [Localstack](https://github.com/localstack/localstack) for mocking AWS services in integration tests
-  - [Spring Data JPA](https://spring.io/projects/spring-data-jpa) for data access layers
-  - [PostgreSQL](https://www.postgresql.org/) for Database
-  - [FlywayDB](https://flywaydb.org/) for Database migrations
-  - [Lombok](https://projectlombok.org/) for reducing boilerplate code
+  - [Kotlin](https://kotlinlang.org/)
+  - [Gradle](https://gradle.org/)
   - and etc.
 
 ## Contribution
 
-#todo
+I would appreciate any kind of contribution (creating issue, PR, giving ideas, etc.) and list you as one of the contributors/authors. If you have questions related to contribution you can contact me using details provided on Contact Information part of this Readme.
 
 ## Licenses
 
