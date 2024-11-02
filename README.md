@@ -17,8 +17,12 @@
 ## Description
 
 Hi! This is **SortMapper**. 
-SortMapper is powerful library for mapping sort parameters on Spring applications. It enables you to implement sorting functionality with ease, especially for complex, nested fields within entities and flat response models.
-By using custom annotations, SortMapper allows for a seamless integration of mappings for sort parameters. SortMapper also includes validation layer to prevent invalid sort parameters to achieve your Repository layer, ensuring cleaner, more reliable query handling.
+SortMapper is powerful library for mapping sort parameters on Spring applications. 
+
+It enables you to implement sorting functionality with ease, especially for complex, nested fields within entities and flat response models.
+By using custom annotations, SortMapper allows for a seamless integration of mappings for sort parameters. 
+SortMapper also includes validation layer to prevent invalid sort parameters to achieve your Repository layer, ensuring cleaner, more reliable query handling.
+
 With SortMapper, you can enhance your API’s sorting capabilities, creating a more robust and user-friendly experience.
 
 ## Releases
@@ -64,7 +68,7 @@ SortMapper is developed using Kotlin programming language and Spring framework. 
 
 #todo
 
-## License
+## Licenses
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
