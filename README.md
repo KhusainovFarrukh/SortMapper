@@ -2,7 +2,7 @@
 
 ---
 
-## Table of Contents
+## Table of Contents 📚
 
 - [Description](#description)
 - [Releases](#releases)
@@ -14,9 +14,9 @@
 - [Licenses](#licenses)
 - [Contact Information](#contact-information)
 
-## Description
+## Description 📝
 
-Hi! This is **SortMapper**. 
+Hi! This is **SortMapper**. 🎉 
 SortMapper is powerful library for mapping sort parameters on Spring applications. 
 
 It enables you to implement sorting functionality with ease, especially for complex, nested fields within entities and flat response models.
@@ -25,18 +25,18 @@ SortMapper also includes validation layer to prevent invalid sort parameters to 
 
 With SortMapper, you can enhance your API’s sorting capabilities, creating a more robust and user-friendly experience.
 
-## Releases
+## Releases 📦
 
 Current version is v0.0.1.
 
 You can see changes and earlier versions on [CHANGELOG.md](https://github.com/KhusainovFarrukh/SortMapper/blob/main/CHANGELOG.md)
 
-## Features
+## Features 📊
 
 - Mapping sort parameters
 - Validation invalid sort parameters
 
-## Installation
+## Installation ⚙️
 
 Simply add to your dependencies list. For example, in Gradle:
 
@@ -49,7 +49,7 @@ dependencies {
 }
 ```
 
-## Usage
+## Usage 🛠️
 
 Add @SortMapping annotation to method/function for which you want to enable mapping:
 
@@ -81,11 +81,24 @@ data class LessonResponseDTO(
 )
 ```
 
-That's all! Reay to use!
+That's all! You are ready to use SortMapper! 🎉
+
+Also you can configure it using application.yml (.properties) file. Default values are:
+
+```yaml
+sort-mapper:
+  work-mode: ENABLED
+  param-validation-type: SOFT
+  exception:
+    handler-enabled: true
+    http-code: 400
+    stacktrace-enabled: true
+```
+See source code for detailed documentation.
 
 For detailed example and other use-cases see sort-mapper-example (Kotlin) and sort-mapper-example-java (Java) projects on this git repository.
 
-## Tech stack
+## Tech stack 🖥️
 
 SortMapper is developed using Kotlin programming language and Spring framework. The full tech stack:
 
@@ -94,11 +107,11 @@ SortMapper is developed using Kotlin programming language and Spring framework. 
   - [Gradle](https://gradle.org/)
   - and etc.
 
-## Contribution
+## Contribution 🤝
 
-I would appreciate any kind of contribution (creating issue, PR, giving ideas, etc.) and list you as one of the contributors/authors. If you have questions related to contribution you can contact me using details provided on Contact Information part of this Readme.
+I welcome all contributions (creating issues, PRs, providing ideas, etc.) and will list you as a contributor or author. If you have any questions about contributing, feel free to reach out via the contact details provided below.
 
-## Licenses
+## Licenses 📝
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
@@ -108,7 +121,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## Contact Information
+## Contact Information 📫
 
 - Email Address: farrukhbekkhusainov@gmail.com
 - [Telegram profile](https://t.me/f_khusainov)
