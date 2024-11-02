@@ -29,7 +29,7 @@ With SortMapper, you can enhance your API’s sorting capabilities, creating a m
 
 Current version is v0.0.1.
 
-You can see changes and earlier versions on [CHANGELOG.md](https://github.com/KhusainovFarrukh/SortMapper/blob/main/CHANGELOG.md)
+You can see changes and earlier versions on [CHANGELOG.md](CHANGELOG.md)
 
 ## Features 📊
 
