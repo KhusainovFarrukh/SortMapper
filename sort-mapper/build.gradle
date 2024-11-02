@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'io.github.khusainovfarrukh'
-version = '0.0.1-rc2'
+version = '0.0.1-rc3'
 
 repositories {
     mavenCentral()
@@ -38,7 +38,7 @@ test {
     useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(17)
 }
 
 tasks.register("withKotlinJar", Jar) {
