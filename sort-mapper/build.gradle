@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'io.github.khusainovfarrukh'
-version = '0.0.1-rc1'
+version = '0.0.1-rc2'
 
 repositories {
     mavenCentral()
@@ -57,7 +57,6 @@ publishing {
     publications {
         maven(MavenPublication) {
             from components.java
-            artifact(tasks.named("withKotlinJar").get())
 
             groupId = "io.github.khusainovfarrukh"
             artifactId = "sort-mapper"

@@ -16,6 +16,9 @@ jobs:
           java-version: '21'
       - name: Run chmod to make the gradlew file executable
         run: chmod +x ./sort-mapper/gradlew
+      - name: Gradle clean
+        working-directory: ./sort-mapper
+        run: ./gradlew clean
       - name: Publish package to local staging directory
         working-directory: ./sort-mapper
         run: ./gradlew :publish
